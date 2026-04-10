@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Traffic Enforcement Management System</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body class="auth-body">
+
+  <!-- ===================== LOGIN PAGE LAYOUT ===================== -->
+  <!-- Left Panel: Form | Right Panel: Hero Image -->
+  <div class="auth-container">
+
+    <!-- ===== LEFT PANEL: Login Form ===== -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrapper">
+
+        <!-- Title -->
+        <h1 class="auth-title">Welcome!</h1>
+        <p class="auth-subtitle">Sign in to your account</p>
+
+        <!-- Role Selection -->
+        <p class="auth-label">Choose account type.</p>
+        <div class="role-radio-group">
+          <label class="role-radio">
+            <input type="radio" name="loginRole" value="Admin" checked />
+            <span class="radio-circle"></span>
+            <span class="radio-text">Admin</span>
+          </label>
+          <label class="role-radio">
+            <input type="radio" name="loginRole" value="Staff" />
+            <span class="radio-circle"></span>
+            <span class="radio-text">Staff</span>
+          </label>
+          <label class="role-radio">
+            <input type="radio" name="loginRole" value="Enforcer" />
+            <span class="radio-circle"></span>
+            <span class="radio-text">Enforcer</span>
+          </label>
+        </div>
+
+        <!-- ID Number Field -->
+        <div class="auth-input-group">
+          <input
+            type="text"
+            id="loginId"
+            class="auth-input"
+            placeholder="ID Number"
+            autocomplete="username"
+          />
+        </div>
+
+        <!-- Password Field -->
+        <div class="auth-input-group">
+          <input
+            type="password"
+            id="loginPassword"
+            class="auth-input"
+            placeholder="Password"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="auth-forgot">
+          <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <!-- Error Message -->
+        <div id="loginError" class="auth-error" style="display:none;"></div>
+
+        <!-- Login Button -->
+        <button class="auth-btn" id="loginBtn" onclick="handleLogin()">
+          LOGIN
+        </button>
+
+        <!-- Register Link -->
+        <p class="auth-switch">
+          Don't have an account?
+          <a href="register.html" class="auth-link">Register here</a>
+        </p>
+
+      </div>
+    </div>
+
+    <!-- ===== RIGHT PANEL: Hero with Traffic Light Background ===== -->
+    <div class="auth-hero-panel hero-right">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <!-- TMEO Seal Logo (SVG-drawn since we can't use external image) -->
+        <div class="tmeo-seal">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="seal-svg">
+            <!-- Outer yellow ring -->
+            <circle cx="100" cy="100" r="98" fill="#FFB800" />
+            <!-- Inner blue circle -->
+            <circle cx="100" cy="100" r="82" fill="#87CEEB" />
+            <!-- Traffic light pole -->
+            <rect x="96" y="55" width="8" height="90" fill="#222" rx="3"/>
+            <!-- Traffic light box -->
+            <rect x="75" y="52" width="50" height="95" rx="8" fill="#111"/>
+            <!-- Red light -->
+            <circle cx="100" cy="72" r="14" fill="#FF3333"/>
+            <circle cx="100" cy="72" r="10" fill="#FF6666" opacity="0.7"/>
+            <!-- Yellow light -->
+            <circle cx="100" cy="100" r="14" fill="#FFB800"/>
+            <circle cx="100" cy="100" r="10" fill="#FFD700" opacity="0.7"/>
+            <!-- Green light -->
+            <circle cx="100" cy="128" r="14" fill="#22CC44"/>
+            <circle cx="100" cy="128" r="10" fill="#44EE66" opacity="0.7"/>
+            <!-- Arc text top -->
+            <path id="topArc" d="M 18,100 A 82,82 0 0,1 182,100" fill="none"/>
+            <text font-size="11" font-weight="700" fill="#1a1a2e" font-family="Arial, sans-serif" letter-spacing="2">
+              <textPath href="#topArc" startOffset="5%">TRAFFIC MANAGEMENT &amp; ENFORCEMENT</textPath>
+            </text>
+            <!-- Arc text bottom -->
+            <path id="botArc" d="M 18,100 A 82,82 0 0,0 182,100" fill="none"/>
+            <text font-size="12" font-weight="700" fill="#1a1a2e" font-family="Arial, sans-serif" letter-spacing="2">
+              <textPath href="#botArc" startOffset="22%">LUCENA CITY</textPath>
+            </text>
+            <!-- OFFICE label -->
+            <text x="100" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e" font-family="Arial, sans-serif" letter-spacing="1">OFFICE</text>
+          </svg>
+        </div>
+
+        <!-- System Title -->
+        <h2 class="hero-title">Traffic Enforcement<br/>Management System</h2>
+        <p class="hero-subtitle">Traffic Management and Enforcement Office</p>
+      </div>
+    </div>
+
+  </div><!-- end auth-container -->
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Seed default admin account if no users exist
+    seedDefaultAccounts();
+  </script>
+</body>
+</html>
